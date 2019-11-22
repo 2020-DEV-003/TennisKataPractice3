@@ -1,6 +1,9 @@
 package com.kata.test;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
+import org.junit.Test;
 
 import com.kata.Player;
 import com.kata.TennisGame;
@@ -22,4 +25,11 @@ public class TennisGameTest {
 		tennisGame = new TennisGame();
 	}
 
+	@Test
+	public void testNewTennisGameShouldReturnLoveAll() {
+
+		playerOne.setScore(0);
+		playerTwo.setScore(0);
+		assertEquals("LOVE All", tennisGame.getScore(playerOne, playerTwo));
+	}
 }
