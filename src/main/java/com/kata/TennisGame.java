@@ -4,12 +4,11 @@ import com.kata.util.Points;
 import com.kata.util.Score;
 
 /**
- * @author XXXXX
- * Description : This class contain logic for Tennis Game
+ * @author XXXXX Description : This class contain logic for Tennis Game
  *
  */
 public class TennisGame {
-	
+
 	/**
 	 * @author XXXXX
 	 * @param playerOne
@@ -17,10 +16,18 @@ public class TennisGame {
 	 * @return
 	 */
 	public String getScore(Player playerOne, Player playerTwo) {
-		String score = "";
-		if (playerOne.getScore() == 0 && playerTwo.getScore() == 0) {
-			score = Points.get(playerOne.getScore()) + Score.ALL.value;
+		int playerOneScore = playerOne.getScore();
+		int playerTwoScore = playerTwo.getScore();
+		if (isAll(playerOneScore, playerTwoScore)) {
+			return Points.get(playerOne.getScore()) + Score.ALL.value;
 		}
-		return score;
+		return Points.get(playerOne.getScore()) + "," + Points.get(playerTwoScore);
+	}
+
+	private boolean isAll(int playerOneScore, int playerTwoScore) {
+		if (playerOneScore == playerTwoScore && playerOneScore <= 3) {
+			return true;
+		}
+		return false;
 	}
 }
